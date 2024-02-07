@@ -1,10 +1,15 @@
 import React from "react";
+import ShowContext from "../context/ShowContext";
+import { useContext } from "react";
 function Card({
     id,firstName="not found!",lastName="not found!",imageUrl,onDetailsClick,jobTitle
 }) {
- 
+  const {isloading}=useContext(ShowContext)
   return (
     <>
+    {
+      !isloading && (
+
       <div className="">
         <div className="card" style={{width: "18rem"}}>
           <img src={imageUrl} className="card-img-top" text-bg-danger  alt="No avatar to show or not found" style={{height: "15rem"}}/>
@@ -23,6 +28,8 @@ function Card({
     
 
       </div>
+      )
+    }
     </>
   );
 }
