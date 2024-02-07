@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+import path from "path"
+const dirs=path.dirname("page.js")
+const nextConfig = {
+  
+};
+
+
 
 export default nextConfig;
