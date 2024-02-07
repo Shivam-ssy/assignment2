@@ -6,6 +6,7 @@ import Modals from "./Modal.js";
 function Cardcontainer() {
   const { apiData } = useContext(ShowContext);
   const [selectedShow, setSelectedShow] = useState(null);
+ 
 
   const handleDetailsClick = (showDetails) => {
     console.log("Details button clicked");
@@ -34,18 +35,14 @@ function Cardcontainer() {
               imageUrl={show?.avatar}
               id={show?.id}
               jobTitle={show?.jobTitle}
-              onDetailsClick={() => handleDetailsClick(show?.id)}
+              onDetailsClick={() => handleDetailsClick(index)}
             />
           </div>
         ))}
         {selectedShow && (
         <Modals
-        firstName={apiData[selectedShow-1]?.profile?.firstName}
-        lastName={apiData[selectedShow-1]?.profile?.lastName}
-        imageUrl={apiData[selectedShow-1]?.avatar}
-        id={apiData[selectedShow-1]?.id}
-        jobTitle={apiData[selectedShow-1]?.jobTitle}
-        details={apiData[selectedShow-1]}
+        
+        details={apiData[selectedShow]}
         onClose={closeModal}
         />
       )}

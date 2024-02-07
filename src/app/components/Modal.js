@@ -5,13 +5,9 @@ import {
  RiMailFill
 } from "@remixicon/react";
 const Modals = ({
-  firstName,
-  lastName,
-  imageUrl,
-  url,
   details,
   onClose,
-  jobTitle,
+  
 }) => {
 
 const date = new Date(details?.createdAt);
@@ -38,7 +34,7 @@ const formattedDateString = date.toLocaleDateString('en-US', options);
       <div className="modal-dialog " role="dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title">{`${firstName} ${lastName}`}</h5>
+            <h5 className="modal-title">{`${details?.profile?.firstName} ${details?.profile?.lastName}`}</h5>
             <button
               type="button"
               className="close bg-transparent border-0"
@@ -50,7 +46,7 @@ const formattedDateString = date.toLocaleDateString('en-US', options);
           <div className="modal-body p-md-5 position-relative d-flex flex-column flex-md-row align-items-center gap-5">
             <div className="">
               <img
-                src={imageUrl}
+                src={details?.avatar}
                 alt="image not found "
                 style={{
                   position: "relative",
@@ -58,7 +54,7 @@ const formattedDateString = date.toLocaleDateString('en-US', options);
               />
             </div>
             <div className=" d-flex flex-column ">
-              <h5 className="d-flex gap-3"><span><RiUserFill color="black"/></span>{`${firstName} ${lastName}`}</h5>
+              <h5 className="d-flex gap-3"><span><RiUserFill color="black"/></span>{`${details?.profile?.firstName} ${details?.profile?.lastName}`}</h5>
               <div className="d-flex gap-3"><span><RiMailFill color="black"/></span>{details?.profile?.email}</div>
               <div className="d-flex  gap-3"><span className="fw-bold text-black">Bio:</span>{details?.Bio}</div>
               <div className="d-flex  gap-3"><span className="fw-bold text-black">Job:</span>{details?.jobTitle}</div>
