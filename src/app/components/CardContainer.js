@@ -12,9 +12,18 @@ function CardContainer() {
   const [selectedShow, setSelectedShow] = useState(null);
   const [sideBarWidth, setSidebarWidth] = useState("width100");
   const [cardWidth, setCardWidth] = useState("width100");
+  const [display,setdisplay]=useState('d-none')
   const [imageUrl, setFinalImageUrl] = useState("user-fill.svg");
   const [screenWidth, setScreenWidth] = useState();
-
+  useEffect(()=>{
+    const handledisplay=()=>{
+      if(isloading)
+      setdisplay("d-none")
+      else
+      setdisplay("d-flex")
+    }
+    handledisplay();
+  },[isloading])
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -68,8 +77,9 @@ function CardContainer() {
 
   return (
     <>
+        
       <div className="mainContainer mt-3">
-        <div className={`d-flex pt-5 justify-content-center left-side align-items-center gap-4 flex-wrap ${cardWidth}`}>
+        <div className={`${display} pt-5 justify-content-center left-side align-items-center gap-4 flex-wrap ${cardWidth}`}>
           {apiData.map((show, index) => (
             <div key={index}>
               <Card
@@ -83,7 +93,7 @@ function CardContainer() {
             </div>
           ))}
         </div>
-        {isopen && isloading && (
+        {isopen && (
           <div className={`right-side border-secondary border  d-flex flex-column justify-content-center gap-3 text-white align-items-center ${sideBarWidth}`}>
             <RiCloseLine color="white" onClick={closeModal} style={{ position: 'absolute', top: '2em', right: '2em', cursor: 'pointer' }} />
             <div className="w-25">
@@ -101,6 +111,7 @@ function CardContainer() {
           </div>
         )}
       </div>
+     
     </>
   );
 }
