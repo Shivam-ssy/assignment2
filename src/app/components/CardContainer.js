@@ -8,7 +8,7 @@ import Modals from "./Modal.js";
 import SideBar from "./SideBar.js";
 
 function CardContainer() {
-  const { apiData, isopen, setIsOpen, finalimage } = useContext(ShowContext);
+  const { apiData, isopen, setIsOpen,isloading} = useContext(ShowContext);
   const [selectedShow, setSelectedShow] = useState(null);
   const [sideBarWidth, setSidebarWidth] = useState("width100");
   const [cardWidth, setCardWidth] = useState("width100");
@@ -83,7 +83,7 @@ function CardContainer() {
             </div>
           ))}
         </div>
-        {isopen && (
+        {isopen && isloading && (
           <div className={`right-side border-secondary border  d-flex flex-column justify-content-center gap-3 text-white align-items-center ${sideBarWidth}`}>
             <RiCloseLine color="white" onClick={closeModal} style={{ position: 'absolute', top: '2em', right: '2em', cursor: 'pointer' }} />
             <div className="w-25">
