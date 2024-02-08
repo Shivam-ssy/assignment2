@@ -18,6 +18,7 @@
     display: flex;
     background-color:#252A46;
     position: relative;
+    height: auto;
 }
 .left-side {
    
