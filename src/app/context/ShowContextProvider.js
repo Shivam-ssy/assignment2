@@ -7,6 +7,8 @@ import { Suspense } from 'react'
 const ShowContextProvider = ({children}) => {
     const [apiData, setApiData] = useState([]);
     const [isloading,setLoading]=useState(false)
+    const [isopen,setIsOpen]=useState(false)
+    let finalimage=[]
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true)
@@ -26,7 +28,7 @@ const ShowContextProvider = ({children}) => {
     fetchData();
   }, []);
     return(
-        <ShowContext.Provider value={{apiData,isloading}}>    
+        <ShowContext.Provider value={{apiData,isloading,isopen,setIsOpen,finalimage}}>    
         {children}
         </ShowContext.Provider>
     )

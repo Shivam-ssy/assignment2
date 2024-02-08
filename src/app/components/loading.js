@@ -8,11 +8,11 @@ function Loader() {
 {
   isloading && (
 
-        <div className="d-flex loading justify-content-center align-items-center">
+        <div className="d-flex loading justify-content-center align-items-center position-relative" style={{backgroundColor:"#0D0516",height:"100vh"}}>
 
-  <div className="spinner-border " role="status">
-    <span className="visually-hidden">Loading...</span>
-  </div>
+<div className="spinner-grow text-primary" style={{width: "3rem", height: "3rem"}} role="status">
+  <span className="visually-hidden">Loading...</span>
+</div>
         </div>
   )
 }
