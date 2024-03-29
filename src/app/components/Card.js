@@ -37,7 +37,7 @@ function Card({
         <div className="card" style={{width: "18rem"}}>
           <div className="">
 
-          <img draggable="false" src={finalImageUrl} className="card-img-top rounded-circle" text-bg-danger  alt="No avatar to show or not found" style={{height: "15rem"}}/>
+          <img draggable="false" onError="user-fill.svg" src={finalImageUrl} className="card-img-top rounded-circle" text-bg-danger  alt="No avatar to show or not found" style={{height: "15rem"}}/>
           </div>
           <div className="card-body">
             <h5 className="card-title">{`${firstName} ${lastName}`}</h5>

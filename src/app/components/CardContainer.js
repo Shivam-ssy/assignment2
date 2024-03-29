@@ -15,6 +15,10 @@ function CardContainer() {
   const [display,setdisplay]=useState('d-none')
   const [imageUrl, setFinalImageUrl] = useState("user-fill.svg");
   const [screenWidth, setScreenWidth] = useState();
+  const handleImageError = (event) => {
+    event.target.src = "user-fill.svg"; 
+  };
+  
   useEffect(()=>{
     const handledisplay=()=>{
       if(isloading)
@@ -97,7 +101,7 @@ function CardContainer() {
           <div className={`right-side border-secondary border  d-flex flex-column justify-content-center gap-3 text-white align-items-center ${sideBarWidth}`}>
             <RiCloseLine color="white" onClick={closeModal} style={{ position: 'absolute', top: '2em', right: '2em', cursor: 'pointer' }} />
             <div className="w-25">
-              <img className="rounded" src={apiData[selectedShow]?.avatar} alt="image not found" />
+              <img onError={handleImageError} className="rounded" src={apiData[selectedShow]?.avatar} alt="image not found" />
             </div>
             <h5>{apiData[selectedShow]?.profile?.username}</h5>
             <div style={{ width: "100%", height: '1px', backgroundColor: 'white' }}></div>
